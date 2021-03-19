@@ -2,3 +2,4 @@ hostname -I | awk '{print $1}' - IP одной строкой
 wget https://github.com/prometheus/prometheus/releases/download/v2.25.2/prometheus-2.25.2.linux-amd64.tar.gz скачивание прометея
 tar -zxpvf prometheus-*.*.*.linux-amd64.tar.gz распаковка прометея
 prometheus-*.*.*.linux-amd64 универсальное название прометея
+wget -O prometheus.service https://raw.githubusercontent.com/KrimUp/End/main/prometheus.service?token=AKLQHM65QRVDVSHNSCCEGF3AKSBQQ скачивание файла конфигурации демона прометея
