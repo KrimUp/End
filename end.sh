@@ -12,6 +12,10 @@ then
     dnf -y install nginx
     dnf -y install mysql-server
 
+    #клонирование репозитория
+    git clone https://github.com/KrimUp/End.git
+
+
     #установка Prometheus
     useradd -m -s /bin/false prometheus
     mkdir /etc/prometheus
@@ -21,12 +25,10 @@ then
     tar -zxpvf prometheus-*.*.*.linux-amd64.tar.gz
     cp prometheus-*.*.*.linux-amd64/prometheus  /usr/local/bin
     cp prometheus-*.*.*.linux-amd64/promtool  /usr/local/bin
-    wget -O prometheus.yml https://raw.githubusercontent.com/KrimUp/End/main/prometheus.yml?token=AKLQHM62P7X4L3FMCNXJ4DDAKSHSK
-    cp prometheus.yml  /etc/prometheus/
+    cp End/prometheus.yml  /etc/prometheus/
     firewall-cmd --add-port=9090/tcp --permanent
     firewall-cmd --reload
-    wget -O prometheus.service https://raw.githubusercontent.com/KrimUp/End/main/prometheus.service?token=AKLQHM65QRVDVSHNSCCEGF3AKSBQQ
-    cp prometheus.service /etc/systemd/system
+    cp End/prometheus.service /etc/systemd/system
     
 
     #установка node_exporter
@@ -37,8 +39,7 @@ then
     chown node_exporter:node_exporter /usr/local/bin/node_exporter
     firewall-cmd --add-port=9100/tcp  --permanent
     firewall-cmd --reload
-    wget -O node_exporter.service https://raw.githubusercontent.com/KrimUp/End/main/node_exporter.service?token=AKLQHM2KOMXI2VEJNHGR7BDAKSESM
-    cp node_exporter.service /etc/systemd/system
+    cp End/node_exporter.service /etc/systemd/system
     
     #включение демонов prometheus и node_exporter
     systemctl daemon-reload
