@@ -40,8 +40,6 @@ then
     wget -O node_exporter.service https://raw.githubusercontent.com/KrimUp/End/main/node_exporter.service?token=AKLQHM2KOMXI2VEJNHGR7BDAKSESM
     cp node_exporter.service /etc/systemd/system
     
-    
-
     #включение демонов prometheus и node_exporter
     systemctl daemon-reload
     systemctl start node_exporter
