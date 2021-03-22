@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#
+systemctl start mysqld
+systemctl enable mysqld
+
+#
+
