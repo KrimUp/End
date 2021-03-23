@@ -8,7 +8,7 @@ then
     dnf -y update
     dnf -y install wget
     dnf -y install git
-    dnf -y install httpd
+    
     dnf -y install nginx
     dnf -y install mysql-server
 
