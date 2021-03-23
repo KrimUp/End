@@ -1,5 +1,13 @@
 #!/bin/bash
+ip=$(hostname -I | awk '{print $1}')
 mkdir /var/www/8080
 mkdir /var/www/8081
-cp End/8080.html /var/www/8080
-cp End/8081.html /var/www/8081
+cp End/8080.html /var/www/8080/
+cp End/8081.html /var/www/8081/
+cp End/loadbalancerd/8080.conf /etc/httpd/conf.d/
+cp End/loadbalancerd/8081.conf /etc/httpd/conf.d/
+cp End/loadbalancerd/upstream.conf /etc/nginx/conf.d/
+cp End/loadbalancerd/nginx.conf /etc/nginx/
+sed -i "s/serverip/$ip/g" /etc/nginx/conf.d/upstream.conf
+systemctl start httpd
+systemctl start nginx
