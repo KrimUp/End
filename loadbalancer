@@ -1,5 +1,0 @@
-#!/bin/bash
-mkdir /var/www/8080
-mkdir /var/www/8081
-cp End/8080 /var/www/8080
-cp End/8081 /var/www/8081
