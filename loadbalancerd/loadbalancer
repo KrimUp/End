@@ -6,7 +6,7 @@ mkdir /var/www/8080
 mkdir /var/www/8081
 cp 8080.html /var/www/8080/
 cp 8081.html /var/www/8081/
-cp httpd.conf /etc/httpd/conf
+cp httpd.conf /etc/httpd/conf/
 cp 8080.conf /etc/httpd/conf.d/
 cp 8081.conf /etc/httpd/conf.d/
 cp upstream.conf /etc/nginx/conf.d/
