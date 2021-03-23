@@ -7,9 +7,7 @@ then
     #установка ПО с помощью пакетного менеджера
     dnf -y update
     dnf -y install wget
-    dnf -y install git
-    
-    dnf -y install nginx
+    dnf -y install git   
     dnf -y install mysql-server
 
     #клонирование репозитория

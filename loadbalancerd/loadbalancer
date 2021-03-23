@@ -4,13 +4,13 @@ dnf -y install nginx
 ip=$(hostname -I | awk '{print $1}')
 mkdir /var/www/8080
 mkdir /var/www/8081
-cp /home/adminroot/End/loadbalancerd/8080.html /var/www/8080/
-cp /home/adminroot/End/loadbalancerd/8081.html /var/www/8081/
-cp /home/adminroot/End/loadbalancerd/httpd.conf /etc/httpd/conf
-cp /home/adminroot/End/loadbalancerd/8080.conf /etc/httpd/conf.d/
-cp /home/adminroot/End/loadbalancerd/8081.conf /etc/httpd/conf.d/
-cp /home/adminroot/End/loadbalancerd/upstream.conf /etc/nginx/conf.d/
-cp /home/adminroot/End/loadbalancerd/nginx.conf /etc/nginx/
+cp 8080.html /var/www/8080/
+cp 8081.html /var/www/8081/
+cp httpd.conf /etc/httpd/conf
+cp 8080.conf /etc/httpd/conf.d/
+cp 8081.conf /etc/httpd/conf.d/
+cp upstream.conf /etc/nginx/conf.d/
+cp nginx.conf /etc/nginx/
 sed -i "s/serverip/$ip/g" /etc/nginx/conf.d/upstream.conf
 systemctl start httpd
 systemctl start nginx
