@@ -4,8 +4,8 @@ dnf -y install nginx
 ip=$(hostname -I | awk '{print $1}')
 mkdir /var/www/8080
 mkdir /var/www/8081
-cp 8080.html /var/www/8080/
-cp 8081.html /var/www/8081/
+cp 8080.html /var/www/8080/index.html
+cp 8081.html /var/www/8081/index.html
 cp httpd.conf /etc/httpd/conf/
 cp 8080.conf /etc/httpd/conf.d/
 cp 8081.conf /etc/httpd/conf.d/
