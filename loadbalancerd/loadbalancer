@@ -12,5 +12,6 @@ cp 8081.conf /etc/httpd/conf.d/
 cp upstream.conf /etc/nginx/conf.d/
 cp nginx.conf /etc/nginx/
 sed -i "s/serverip/$ip/g" /etc/nginx/conf.d/upstream.conf
+setsebool -P httpd_unified 1
 systemctl start httpd
 systemctl start nginx
