@@ -12,8 +12,6 @@ cp End/prometheus.yml  /etc/prometheus/
 firewall-cmd --add-port=9090/tcp --permanent
 firewall-cmd --reload
 cp End/prometheus.service /etc/systemd/system
-    
-
 #установка node_exporter
 useradd -m -s /bin/false node_exporter
 wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-amd64.tar.gz
@@ -23,7 +21,6 @@ chown node_exporter:node_exporter /usr/local/bin/node_exporter
 firewall-cmd --add-port=9100/tcp  --permanent
 firewall-cmd --reload
 cp End/node_exporter.service /etc/systemd/system
-    
 #включение демонов prometheus и node_exporter
 systemctl daemon-reload
 systemctl start node_exporter
