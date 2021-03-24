@@ -1,0 +1,16 @@
+#!/bin/bash
+ip=$(hostname -I | awk '{print $1}')
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+cp elasticsearch.repo /etc/yum.repos.d/
+cp kibana.repo /etc/yum.repos.d/
+dnf -y install --enablerepo=elasticsearch elasticsearch
+dnf -y install kibana
+dnf -y install logstash
+
+
+
+
+systemctl daemon-reload
+systemctl start elasticsearch.service
+systemctl start kibana.service
+systemctl start logstash.service
