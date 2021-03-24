@@ -6,7 +6,10 @@ cp kibana.repo /etc/yum.repos.d/
 dnf -y install --enablerepo=elasticsearch elasticsearch
 dnf -y install kibana
 dnf -y install logstash
-
+dnf -y install filebeat
+cp kibana.yml /etc/kibana/
+sed -i "s/serverip/$ip/g" /etc/kibana/kibana.yml
+cp filebeat.yml /etc/filebeat/
 
 
 
@@ -14,3 +17,4 @@ systemctl daemon-reload
 systemctl start elasticsearch.service
 systemctl start kibana.service
 systemctl start logstash.service
+systemctl start filebeat
