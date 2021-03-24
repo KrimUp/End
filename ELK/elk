@@ -15,7 +15,7 @@ filebeat modules enable nginx
 
 
 systemctl daemon-reload
-systemctl start elasticsearch.service
-systemctl start kibana.service
-systemctl start logstash.service
+systemctl start elasticsearch
+systemctl start kibana
+systemctl start logstash
 systemctl start filebeat
