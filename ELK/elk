@@ -9,7 +9,8 @@ dnf -y install logstash
 dnf -y install filebeat
 cp kibana.yml /etc/kibana/
 sed -i "s/serverip/$ip/g" /etc/kibana/kibana.yml
-cp filebeat.yml /etc/filebeat/
+#cp filebeat.yml /etc/filebeat/
+filebeat modules enable nginx
 
 
 
