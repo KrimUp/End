@@ -1,4 +1,31 @@
-#!/bin/bash
-dnf -y install mysql-server
+#Конфигурация master
+dnf -y install mysql-server && dnf -y install nano
+
+nano /etc/my.cnf.d/mysql-server.cnf
+bind-address = masterip
+server-id = 1
+
 systemctl start mysqld
-mysql -u root -e "CREATE DATABASE TESTSH;"
+CREATE USER 'replica'@'slaveip' IDENTIFIED BY 'end';
+GRANT REPLICATION SLAVE ON *.*TO 'replica'@'slaveip';
+SHOW MASTER STATUS\G
+
+#Конфигурация slave
+dnf -y install mysql-server && dnf -y install nano
+
+nano /etc/my.cnf.d/mysql-server.cnf
+bind-address = slaveip
+server-id = 3
+
+STOP SLAVE;
+CHANGE MASTER TO MASTER_HOST='masterip', MASTER_USER='replica', MASTER_PASSWORD='end', MASTER_LOG_FILE='binlog.000002', MASTER_LOG_POS=156, GET_MASTER_PUBLIC_KEY = 1;
+START SLAVE;
+SHOW SLAVE STATUS\G
+EXIT;
+systemctl restart mysqld
+
+#Проверка репликации
+#master
+CREATE DATABASE OTUS_REPLICATION;
+#slave
+SHOW DATABASES;
