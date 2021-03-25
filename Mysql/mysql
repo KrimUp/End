@@ -1,6 +1,8 @@
 #Конфигурация master
 dnf -y install mysql-server && dnf -y install nano
 
+setenforce 0
+
 nano /etc/my.cnf.d/mysql-server.cnf
 bind-address = masterip
 server-id = 1
@@ -12,6 +14,8 @@ SHOW MASTER STATUS\G
 
 #Конфигурация slave
 dnf -y install mysql-server && dnf -y install nano
+
+setenforce 0
 
 nano /etc/my.cnf.d/mysql-server.cnf
 bind-address = slaveip

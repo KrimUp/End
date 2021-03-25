@@ -8,10 +8,8 @@ wget https://github.com/prometheus/prometheus/releases/download/v2.25.2/promethe
 tar -zxpvf prometheus-*.*.*.linux-amd64.tar.gz
 cp prometheus-*.*.*.linux-amd64/prometheus  /usr/local/bin
 cp prometheus-*.*.*.linux-amd64/promtool  /usr/local/bin
-cp End/prometheus.yml  /etc/prometheus/
-firewall-cmd --add-port=9090/tcp --permanent
-firewall-cmd --reload
-cp End/prometheus.service /etc/systemd/system
+cp prometheus.yml  /etc/prometheus/
+cp prometheus.service /etc/systemd/system
 #установка node_exporter
 useradd -m -s /bin/false node_exporter
 wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-amd64.tar.gz
@@ -20,7 +18,7 @@ cp node_exporter-*.*.*.linux-amd64/node_exporter /usr/local/bin
 chown node_exporter:node_exporter /usr/local/bin/node_exporter
 firewall-cmd --add-port=9100/tcp  --permanent
 firewall-cmd --reload
-cp End/node_exporter.service /etc/systemd/system
+cp node_exporter.service /etc/systemd/system
 #включение демонов prometheus и node_exporter
 systemctl daemon-reload
 systemctl start node_exporter
