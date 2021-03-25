@@ -1,0 +1,4 @@
+#!/bin/bash
+dnf -y install mysql-server
+systemctl start mysqld
+mysql -u root -e "CREATE DATABASE TESTSH;"
