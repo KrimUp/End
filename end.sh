@@ -8,7 +8,7 @@ then
     #установка ПО с помощью пакетного менеджера
     dnf -y install nano
     dnf -y install wget
-
+    dnf -y install mysql-server
     #установка балансировщика nginx
     sh Loadbalancerd/loadbalancer.sh
     #установка prometheus
@@ -16,7 +16,7 @@ then
     #установка ELK
     sh ELK/elk.sh
     #установка MySQL к сожалению в ручном режиме
-
+    
 }
 else
 echo "Для выполения данного скрипта необходимы права root, введите sudo перед именем скрипта"
