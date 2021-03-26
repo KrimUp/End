@@ -4,6 +4,7 @@ if [ `whoami` = root ]
 then
 {
     setenforce 0
+    
     #установка ПО с помощью пакетного менеджера
     dnf -y update
     dnf -y install nano
