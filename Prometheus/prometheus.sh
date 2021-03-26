@@ -16,8 +16,6 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_e
 tar -zxpvf node_exporter-*.*.*.linux-amd64.tar.gz
 cp node_exporter-*.*.*.linux-amd64/node_exporter /usr/local/bin
 chown node_exporter:node_exporter /usr/local/bin/node_exporter
-firewall-cmd --add-port=9100/tcp  --permanent
-firewall-cmd --reload
 cp Prometheus/node_exporter.service /etc/systemd/system
 #включение демонов prometheus и node_exporter
 systemctl daemon-reload

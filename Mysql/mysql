@@ -4,7 +4,6 @@ dnf -y install mysql-server && dnf -y install nano
 setenforce 0
 
 nano /etc/my.cnf.d/mysql-server.cnf
-bind-address = masterip
 server-id = 1
 
 systemctl start mysqld
@@ -18,8 +17,8 @@ dnf -y install mysql-server && dnf -y install nano
 setenforce 0
 
 nano /etc/my.cnf.d/mysql-server.cnf
-bind-address = slaveip
 server-id = 3
+systemctl start mysqld
 
 STOP SLAVE;
 CHANGE MASTER TO MASTER_HOST='masterip', MASTER_USER='replica', MASTER_PASSWORD='end', MASTER_LOG_FILE='binlog.000002', MASTER_LOG_POS=156, GET_MASTER_PUBLIC_KEY = 1;
